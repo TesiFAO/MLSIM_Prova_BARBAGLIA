@@ -44,6 +44,22 @@ public class GCM {
         return this.getSeed() / this.getM();
     }
 
+    public double[] generate4v1() {
+        int items = (int)Math.pow(2.0, this.getB() - 2) - 1;
+        double[] out = new double[1 + items];
+        for (int i = 0 ; i <= items ; i++)
+            out[i] = 4 * i + 1;
+        return out;
+    }
+
+    public double[] generate4v3() {
+        int items = (int)Math.pow(2.0, this.getB() - 2) - 1;
+        double[] out = new double[1 + items];
+        for (int i = 0 ; i <= items ; i++)
+            out[i] = 4 * i + 3;
+        return out;
+    }
+
     public int getA() {
         return a;
     }

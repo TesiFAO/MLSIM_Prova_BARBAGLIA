@@ -4,8 +4,8 @@
     <groupId>it.unimarconi</groupId>
     <artifactId>MLSIM_Prova_BARBAGLIA</artifactId>
     <version>1.0-SNAPSHOT</version>
-    <packaging>war</packaging>
-    <name>Cucumber</name>
+    <packaging>jar</packaging>
+    <name>MLSIM_Prova_BARBAGLIA</name>
     <build>
         <plugins>
             <plugin>
