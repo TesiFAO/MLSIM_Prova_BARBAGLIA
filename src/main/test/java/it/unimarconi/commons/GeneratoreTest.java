@@ -70,8 +70,8 @@ public class GeneratoreTest extends TestCase {
             l.add(tmp);
             tmp = g.getNextHyperExp();
         }
-        System.out.println("Media: " + Stats.media(l));
-        System.out.println("SD: " + Stats.sd(l));
+        assertTrue(Stats.media(l) < 23.0);
+        assertTrue(Stats.sd(l) < 1.15 * Math.pow(avg, 2.0));
     }
 
 }

@@ -2,7 +2,9 @@ package it.unimarconi.commons;
 
 public class Generatore {
 
-    private GCM gcm;
+    private GCM gcm1;
+
+    private GCM gcm2;
 
     private int a;
 
@@ -24,7 +26,7 @@ public class Generatore {
         this.setA(a);
         this.setSeed1(seed);
         this.setB(b);
-        this.setGcm(new GCM(this.getA(), this.getSeed1(), this.getB()));
+        this.setGcm1(new GCM(this.getA(), this.getSeed1(), this.getB()));
         this.setMin(min);
         this.setMax(max);
     }
@@ -33,7 +35,7 @@ public class Generatore {
         this.setA(a);
         this.setSeed1(seed);
         this.setB(b);
-        this.setGcm(new GCM(this.getA(), this.getSeed1(), this.getB()));
+        this.setGcm1(new GCM(this.getA(), this.getSeed1(), this.getB()));
         this.setAvg(avg);
     }
 
@@ -43,38 +45,38 @@ public class Generatore {
         this.setSeed2(seed2);
         this.setB(b);
         this.setP(p);
-        this.setGcm(new GCM(this.getA(), this.getSeed1(), this.getB()));
+        this.setGcm1(new GCM(this.getA(), this.getSeed1(), this.getB()));
+        this.setGcm2(new GCM(this.getA(), this.getSeed2(), this.getB()));
         this.setAvg(avg);
     }
 
     public double getNextRange() {
-        return this.getMin() + this.getGcm().getNextRi() * (this.getMax() - this.getMin());
+        return this.getMin() + this.getGcm1().getNextRi() * (this.getMax() - this.getMin());
     }
 
     public double getNextExp() {
-        return -1.0 * this.getAvg() * Math.log(this.getGcm().getNextRi());
+        return -1.0 * this.getAvg() * Math.log(this.getGcm1().getNextRi());
     }
 
     public double getNextExp(double avg) {
-        return -1.0 * avg * Math.log(this.getGcm().getNextRi());
+        return -1.0 * avg * Math.log(this.getGcm1().getNextRi());
     }
 
     public double getNextHyperExp() {
-        GCM gcm1 = new GCM(this.getA(), this.getSeed1(), this.getB());
-        double ri = gcm1.getNextRi();
-        double xi = getNextExp(1.0);
+        double ri = this.getGcm1().getNextRi();
+        double xi = -1.0 * 1.0 * Math.log(this.getGcm2().getNextRi());
         if (ri <= this.getP())
             return xi * (this.getAvg() / (2.0 * this.getP()));
         else
             return xi * (this.getAvg() / (2.0 * (1.0 - this.getP())));
     }
 
-    public GCM getGcm() {
-        return gcm;
+    public GCM getGcm1() {
+        return gcm1;
     }
 
-    public void setGcm(GCM gcm) {
-        this.gcm = gcm;
+    public void setGcm1(GCM gcm) {
+        this.gcm1 = gcm;
     }
 
     public int getA() {
@@ -141,19 +143,12 @@ public class Generatore {
         this.p = p;
     }
 
-    @Override
-    public String toString() {
-        return "Generatore{" +
-                "gcm=" + gcm +
-                ", a=" + a +
-                ", b=" + b +
-                ", seed1=" + seed1 +
-                ", seed2=" + seed2 +
-                ", min=" + min +
-                ", max=" + max +
-                ", avg=" + avg +
-                ", p=" + p +
-                '}';
+    public GCM getGcm2() {
+        return gcm2;
+    }
+
+    public void setGcm2(GCM gcm2) {
+        this.gcm2 = gcm2;
     }
 
 }
