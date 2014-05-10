@@ -47,20 +47,13 @@ public class GCMTest extends TestCase {
         GCM gcm = new GCM(a, seed, b);
         double[] c1 = gcm.generate4v1();
         double[] c2 = gcm.generate4v3();
-        ArrayList<Double> l1 = toList(c1);
-        ArrayList<Double> l2 = toList(c2);
+        ArrayList<Double> l1 = Utils.toList(c1);
+        ArrayList<Double> l2 = Utils.toList(c2);
         double tmp = gcm.getNext();
         while (tmp != seed) {
             assertTrue(l1.contains(tmp) || l2.contains(tmp));
             tmp = gcm.getNext();
         }
-    }
-
-    private ArrayList<Double> toList(double[] a) {
-        ArrayList<Double> l = new ArrayList<Double>();
-        for (int i = 0 ; i < a.length ; i++)
-            l.add(a[i]);
-        return l;
     }
 
 }
