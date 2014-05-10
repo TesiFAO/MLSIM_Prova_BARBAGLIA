@@ -58,10 +58,6 @@ public class Generatore {
         return -1.0 * this.getAvg() * Math.log(this.getGcm1().getNextRi());
     }
 
-    public double getNextExp(double avg) {
-        return -1.0 * avg * Math.log(this.getGcm1().getNextRi());
-    }
-
     public double getNextHyperExp() {
         double ri = this.getGcm1().getNextRi();
         double xi = -1.0 * 1.0 * Math.log(this.getGcm2().getNextRi());

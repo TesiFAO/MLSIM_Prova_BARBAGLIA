@@ -71,7 +71,7 @@ public class GeneratoreTest extends TestCase {
             tmp = g.getNextHyperExp();
         }
         assertTrue(Stats.media(l) < 23.0);
-        assertTrue(Stats.sd(l) < 1.15 * Math.pow(avg, 2.0));
+        assertTrue(Stats.sd(l) < 1.1 * Math.pow(avg, 2.0));
     }
 
 }
