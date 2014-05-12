@@ -35,8 +35,8 @@ public class Uniformita {
 
         boolean[] out = new boolean[this.getProve()];
 
-        double min = ChiQuadro.calcolaChiQuadro(this.getD() - 1, ChiQuadro.Z25);
-        double max = ChiQuadro.calcolaChiQuadro(this.getD() - 1, ChiQuadro.Z75);
+        double min = ChiQuadro.calcolaAlphaPercentile(this.getD() - 1, ChiQuadro.Z25);
+        double max = ChiQuadro.calcolaAlphaPercentile(this.getD() - 1, ChiQuadro.Z75);
 
         List<Double> ds = new ArrayList<Double>();
 
@@ -70,7 +70,7 @@ public class Uniformita {
             for (Double freq : freqs.values())
                 yss.add(freq);
             double v = ChiQuadro.calcolaV(yss, size, (1.0 / this.getD()));
-            System.out.println(min + " < " + v + " < " + max + " ?");
+//            System.out.println(min + " < " + v + " < " + max + " ?");
             if (v > min && v < max) {
                 out[k] = true;
             } else {

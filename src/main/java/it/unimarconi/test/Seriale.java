@@ -33,8 +33,8 @@ public class Seriale {
 
 
 
-        double min = ChiQuadro.calcolaChiQuadro(Math.pow(this.getD(), 2) - 1, ChiQuadro.Z25);
-        double max = ChiQuadro.calcolaChiQuadro(Math.pow(this.getD(), 2) - 1, ChiQuadro.Z75);
+        double min = ChiQuadro.calcolaAlphaPercentile(Math.pow(this.getD(), 2) - 1, ChiQuadro.Z25);
+        double max = ChiQuadro.calcolaAlphaPercentile(Math.pow(this.getD(), 2) - 1, ChiQuadro.Z75);
 
         List<Integer> ds = new ArrayList<Integer>();
 
@@ -71,7 +71,7 @@ public class Seriale {
                     out[k] = true;
                 else
                     out[k] = false;
-                System.out.println(tmp.size() + " elements, startIDX: " + startIDX + " ---> " + min + " < " + v + " < " + max);
+//                System.out.println(tmp.size() + " elements, startIDX: " + startIDX + " ---> " + min + " < " + v + " < " + max);
             }
 
             int count = 0;
@@ -79,6 +79,10 @@ public class Seriale {
                 if (out[i])
                     count++;
 
+            System.out.print("Test di Seriale: [a: " + this.getA() + "]");
+            System.out.print("[seed: " + this.getSeed() + "]");
+            System.out.print("[b: " + this.getB() + "]");
+            System.out.print("[d: " + this.getD() + "]\t\t");
             System.out.println(count + " successi su " + this.getProve() + " prove.\n");
 
         }

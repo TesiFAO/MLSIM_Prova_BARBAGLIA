@@ -45,6 +45,11 @@ public class GCM {
         return this.getRi();
     }
 
+    /**
+     * Genera la sequenza predetta dal Corollario A
+     *
+     * @return  Sequenza predetta dal Corollario Q
+     */
     public double[] generate4v1() {
         int items = (int)Math.pow(2.0, this.getB() - 2) - 1;
         double[] out = new double[1 + items];
@@ -53,6 +58,11 @@ public class GCM {
         return out;
     }
 
+    /**
+     * Genera la sequenza predetta dal Corollario A
+     *
+     * @return  Sequenza predetta dal Corollario Q
+     */
     public double[] generate4v3() {
         int items = (int)Math.pow(2.0, this.getB() - 2) - 1;
         double[] out = new double[1 + items];
