@@ -51,6 +51,32 @@ public class Charts {
         this.setFrequenzeRelative(new ArrayList<Double>());
     }
 
+    public Charts(int a, long seed, int b, int avg, int numeroClassi) {
+        this.setA(a);
+        this.setSeed1(seed);
+        this.setB(b);
+        this.setGcm1(new GCM(this.getA(), this.getSeed1(), this.getB()));
+        this.setAvg(avg);
+        this.setNumeroClassi(numeroClassi);
+        this.setSequenza(new ArrayList<Double>());
+        this.setClassi(new ArrayList<Integer>());
+        this.setFrequenzeRelative(new ArrayList<Double>());
+    }
+
+    public Charts(int a, long seed1, long seed2, int b, int avg, double p, int numeroClassi) {
+        this.setA(a);
+        this.setSeed1(seed1);
+        this.setSeed2(seed2);
+        this.setP(p);
+        this.setB(b);
+        this.setGcm1(new GCM(this.getA(), this.getSeed1(), this.getB()));
+        this.setAvg(avg);
+        this.setNumeroClassi(numeroClassi);
+        this.setSequenza(new ArrayList<Double>());
+        this.setClassi(new ArrayList<Integer>());
+        this.setFrequenzeRelative(new ArrayList<Double>());
+    }
+
     public void generaChartsRn() {
         double ri = this.getGcm1().getNextRi();
         while (!this.getSequenza().contains(ri)) {
@@ -63,51 +89,55 @@ public class Charts {
         List<Double> densita = generaDensita();
         List<Double> cumulate = generaCumulate();
         print(soglie, classi, frequenzeRelative, densita, cumulate);
-        System.out.println(this.getSequenza().size() + " rn");
-    }
-
-    public void print(List<String> soglie, List<Integer> classi, List<Double> frequenzeRelative, List<Double> densita, List<Double> cumulate) {
-        String s1 = "Soglie: [";
-        String s2 = "Classi: [";
-        String s3 = "Frequenze Relative: [";
-        String s4 = "Densita: [";
-        String s5 = "Cumulate: [";
-        for (int i = 0 ; i < this.getNumeroClassi() ; i++) {
-            s1 += soglie.get(i);
-            s2 += df.format(classi.get(i));
-            s3 += df.format(frequenzeRelative.get(i));
-            s4 += df.format(densita.get(i));
-            s5 += df.format(cumulate.get(i));
-            if (i < this.getNumeroClassi() - 1) {
-                s1 += ", ";
-                s2 += ", ";
-                s3 += ", ";
-                s4 += ", ";
-                s5 += ", ";
-            }
-        }
-        s1 += "]";
-        s2 += "]";
-        s3 += "]";
-        s4 += "]";
-        s5 += "]";
-        System.out.println(s1);
-        System.out.println(s2);
-        System.out.println(s3);
-        System.out.println(s4);
-        System.out.println(s5);
     }
 
     public void generaChartsSequenzaUniforme() {
-
+        Generatore g = new Generatore(this.getA(), this.getSeed1(), this.getB(), this.getMin(), this.getMax());
+        double ri = g.getNextRange();
+        while (!this.getSequenza().contains(ri)) {
+            this.getSequenza().add(ri);
+            ri = g.getNextRange();
+        }
+        List<String> soglie = generaSoglie();
+        List<Integer> classi = generaClassi();
+        List<Double> frequenzeRelative = generaFrequenzeRelative();
+        List<Double> densita = generaDensita();
+        List<Double> cumulate = generaCumulate();
+        print(soglie, classi, frequenzeRelative, densita, cumulate);
     }
 
     public void generaChartsExp() {
-
+        Generatore g = new Generatore(this.getA(), this.getSeed1(), this.getB(), this.getAvg());
+        double ri = g.getNextExp();
+        while (!this.getSequenza().contains(ri)) {
+            this.getSequenza().add(ri);
+            ri = g.getNextExp();
+        }
+        this.setMin(Stats.min(this.getSequenza()));
+        this.setMax(Stats.max(this.getSequenza()));
+        List<String> soglie = generaSoglie();
+        List<Integer> classi = generaClassi();
+        List<Double> frequenzeRelative = generaFrequenzeRelative();
+        List<Double> densita = generaDensita();
+        List<Double> cumulate = generaCumulate();
+        print(soglie, classi, frequenzeRelative, densita, cumulate);
     }
 
     public void generaChartsHyperExp() {
-
+        Generatore g = new Generatore(this.getA(), this.getSeed1(), this.getSeed2(), this.getB(), this.getAvg(), this.getP());
+        double ri = g.getNextHyperExp();
+        while (!this.getSequenza().contains(ri)) {
+            this.getSequenza().add(ri);
+            ri = g.getNextHyperExp();
+        }
+        this.setMin(Stats.min(this.getSequenza()));
+        this.setMax(Stats.max(this.getSequenza()));
+        List<String> soglie = generaSoglie();
+        List<Integer> classi = generaClassi();
+        List<Double> frequenzeRelative = generaFrequenzeRelative();
+        List<Double> densita = generaDensita();
+        List<Double> cumulate = generaCumulate();
+        print(soglie, classi, frequenzeRelative, densita, cumulate);
     }
 
     private List<String> generaSoglie() {
@@ -155,6 +185,38 @@ public class Charts {
             l.add(sum);
         }
         return l;
+    }
+
+    public void print(List<String> soglie, List<Integer> classi, List<Double> frequenzeRelative, List<Double> densita, List<Double> cumulate) {
+        String s1 = "Soglie: [";
+        String s2 = "Classi: [";
+        String s3 = "Frequenze Relative: [";
+        String s4 = "Densita: [";
+        String s5 = "Cumulate: [";
+        for (int i = 0 ; i < this.getNumeroClassi() ; i++) {
+            s1 += soglie.get(i);
+            s2 += df.format(classi.get(i));
+            s3 += df.format(frequenzeRelative.get(i));
+            s4 += df.format(densita.get(i));
+            s5 += df.format(cumulate.get(i));
+            if (i < this.getNumeroClassi() - 1) {
+                s1 += ", ";
+                s2 += ", ";
+                s3 += ", ";
+                s4 += ", ";
+                s5 += ", ";
+            }
+        }
+        s1 += "]";
+        s2 += "]";
+        s3 += "]";
+        s4 += "]";
+        s5 += "]";
+        System.out.println(s1);
+        System.out.println(s2);
+        System.out.println(s3);
+        System.out.println(s4);
+        System.out.println(s5);
     }
 
     public GCM getGcm1() {

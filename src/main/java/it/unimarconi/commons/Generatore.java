@@ -14,15 +14,15 @@ public class Generatore {
 
     private long seed2;
 
-    private int min;
+    private double min;
 
-    private int max;
+    private double max;
 
     private int avg;
 
     private double p;
 
-    public Generatore(int a, long seed, int b, int min, int max) {
+    public Generatore(int a, long seed, int b, double min, double max) {
         this.setA(a);
         this.setSeed1(seed);
         this.setB(b);
@@ -107,19 +107,19 @@ public class Generatore {
         this.seed2 = seed2;
     }
 
-    public int getMin() {
+    public double getMin() {
         return min;
     }
 
-    public void setMin(int min) {
+    public void setMin(double min) {
         this.min = min;
     }
 
-    public int getMax() {
+    public double getMax() {
         return max;
     }
 
-    public void setMax(int max) {
+    public void setMax(double max) {
         this.max = max;
     }
 

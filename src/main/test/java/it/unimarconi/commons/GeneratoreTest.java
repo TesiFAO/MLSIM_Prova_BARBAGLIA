@@ -68,6 +68,7 @@ public class GeneratoreTest extends TestCase {
         double tmp = g.getNextHyperExp();
         while (!l.contains(tmp)) {
             l.add(tmp);
+            System.out.println(tmp);
             tmp = g.getNextHyperExp();
         }
         assertTrue(Stats.media(l) < 23.0);
