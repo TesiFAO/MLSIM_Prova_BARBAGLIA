@@ -1,4 +1,7 @@
-package it.unimarconi.commons;
+package it.unimarconi.test;
+
+import it.unimarconi.commons.ChiQuadro;
+import it.unimarconi.commons.GCM;
 
 import java.util.ArrayList;
 import java.util.Collections;

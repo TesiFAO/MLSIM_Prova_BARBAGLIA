@@ -1,5 +1,6 @@
 package it.unimarconi.commons;
 
+import it.unimarconi.test.Uniformita;
 import junit.framework.TestCase;
 
 public class UniformitaTest extends TestCase{
