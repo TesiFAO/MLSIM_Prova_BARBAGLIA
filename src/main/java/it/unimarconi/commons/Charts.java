@@ -38,6 +38,8 @@ public class Charts {
 
     private DecimalFormat df = new DecimalFormat("#0.0000");
 
+    private DecimalFormat df2 = new DecimalFormat("#0.00");
+
     public Charts(int a, long seed, int b, double min, double max, int numeroClassi) {
         this.setA(a);
         this.setSeed1(seed);
@@ -144,8 +146,8 @@ public class Charts {
         List<String> l = new ArrayList<String>();
         double step = (this.getMax() - this.getMin()) / this.getNumeroClassi();
         for (int i = 0 ; i < this.getNumeroClassi() - 1; i++)
-            l.add((df.format(this.getMin() + i * step)) + " to " + df.format((this.getMin() + (1 + i) * step)));
-        l.add((df.format(this.getMin() + (this.getNumeroClassi() - 1) * step) + " to " + df.format(this.getMax())));
+            l.add("'" + (df2.format(this.getMin() + i * step)) + " to " + df2.format((this.getMin() + (1 + i) * step)) + "'");
+        l.add("'" + (df2.format(this.getMin() + (this.getNumeroClassi() - 1) * step) + " to " + df2.format(this.getMax())) + "'");
         return l;
     }
 
