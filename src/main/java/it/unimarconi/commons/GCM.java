@@ -4,22 +4,24 @@ public class GCM {
 
     private int a;
 
-    private double m;
+    private long m;
 
     private int b;
 
-    private double seed;
+    private long seed;
+
+    private double ri;
 
     /**
      * @param a    Parametro a del generatore congruente moltiplicativo
      * @param seed Seme iniziale X0 per il generatore congruente moltiplicativo
      * @param b    Potenza di 2 per generare il modulo m = 2 ^b
      */
-    public GCM(int a, double seed, int b) {
+    public GCM(int a, long seed, int b) {
         this.setA(a);
         this.setB(b);
         this.setSeed(seed);
-        this.setM(Math.pow(2.0, this.getB()));
+        this.setM((long)Math.pow(2.0, this.getB()));
     }
 
     /**
@@ -27,9 +29,8 @@ public class GCM {
      * <p/>
      * @return Valore generato tramite il generatore congruente moltiplicativo
      */
-    public double getNext() {
-        double seed = (this.getA() * this.getSeed()) % this.getM();
-        this.setSeed(seed);
+    public long getNext() {
+        this.setSeed((this.getA() * this.getSeed()) % this.getM());
         return this.getSeed();
     }
 
@@ -39,9 +40,9 @@ public class GCM {
      * @return Valore compreso tra 0 ed 1 generato tramite il generatore congruente moltiplicativo
      */
     public double getNextRi() {
-        double seed = (this.getA() * this.getSeed()) % this.getM();
-        this.setSeed(seed);
-        return this.getSeed() / this.getM();
+        long seed = this.getNext();
+        this.setRi(1.0 * seed / this.getM());
+        return this.getRi();
     }
 
     public double[] generate4v1() {
@@ -68,11 +69,11 @@ public class GCM {
         this.a = a;
     }
 
-    public double getM() {
+    public long getM() {
         return m;
     }
 
-    public void setM(double m) {
+    public void setM(long m) {
         this.m = m;
     }
 
@@ -84,12 +85,20 @@ public class GCM {
         this.b = b;
     }
 
-    public double getSeed() {
+    public long getSeed() {
         return seed;
     }
 
-    public void setSeed(double seed) {
+    public void setSeed(long seed) {
         this.seed = seed;
+    }
+
+    public double getRi() {
+        return ri;
+    }
+
+    public void setRi(double ri) {
+        this.ri = ri;
     }
 
     @Override

@@ -16,11 +16,11 @@ public class GeneratoreTest extends TestCase {
 
     private double p = 0.38;
 
-    private double min = 30;
+    private int min = 30;
 
-    private double max = 50;
+    private int max = 50;
 
-    private double avg = 20;
+    private int avg = 20;
 
     public void testGetNextRange_30_50() {
         Generatore g = new Generatore(a, seed1, b, min, max);

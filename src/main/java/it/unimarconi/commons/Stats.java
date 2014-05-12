@@ -19,4 +19,20 @@ public class Stats {
         return sum / l.size();
     }
 
+    public static double min(ArrayList<Double> l) {
+        double min = Double.MAX_VALUE;
+        for (Double d : l)
+            if (d < min)
+                min = d;
+        return min;
+    }
+
+    public static double max(ArrayList<Double> l) {
+        double max = Double.MIN_VALUE;
+        for (Double d : l)
+            if (d > max)
+                max = d;
+        return max;
+    }
+
 }

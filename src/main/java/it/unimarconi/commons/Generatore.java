@@ -10,19 +10,19 @@ public class Generatore {
 
     private int b;
 
-    private double seed1;
+    private long seed1;
 
-    private double seed2;
+    private long seed2;
 
-    private double min;
+    private int min;
 
-    private double max;
+    private int max;
 
-    private double avg;
+    private int avg;
 
     private double p;
 
-    public Generatore(int a, double seed, int b, double min, double max) {
+    public Generatore(int a, long seed, int b, int min, int max) {
         this.setA(a);
         this.setSeed1(seed);
         this.setB(b);
@@ -31,7 +31,7 @@ public class Generatore {
         this.setMax(max);
     }
 
-    public Generatore(int a, double seed, int b, double avg) {
+    public Generatore(int a, long seed, int b, int avg) {
         this.setA(a);
         this.setSeed1(seed);
         this.setB(b);
@@ -39,7 +39,7 @@ public class Generatore {
         this.setAvg(avg);
     }
 
-    public Generatore(int a, double seed1, double seed2, int b, double avg, double p) {
+    public Generatore(int a, long seed1, long seed2, int b, int avg, double p) {
         this.setA(a);
         this.setSeed1(seed1);
         this.setSeed2(seed2);
@@ -91,43 +91,43 @@ public class Generatore {
         this.b = b;
     }
 
-    public double getSeed1() {
+    public long getSeed1() {
         return seed1;
     }
 
-    public void setSeed1(double seed1) {
+    public void setSeed1(long seed1) {
         this.seed1 = seed1;
     }
 
-    public double getSeed2() {
+    public long getSeed2() {
         return seed2;
     }
 
-    public void setSeed2(double seed2) {
+    public void setSeed2(long seed2) {
         this.seed2 = seed2;
     }
 
-    public double getMin() {
+    public int getMin() {
         return min;
     }
 
-    public void setMin(double min) {
+    public void setMin(int min) {
         this.min = min;
     }
 
-    public double getMax() {
+    public int getMax() {
         return max;
     }
 
-    public void setMax(double max) {
+    public void setMax(int max) {
         this.max = max;
     }
 
-    public double getAvg() {
+    public int getAvg() {
         return avg;
     }
 
-    public void setAvg(double avg) {
+    public void setAvg(int avg) {
         this.avg = avg;
     }
 
