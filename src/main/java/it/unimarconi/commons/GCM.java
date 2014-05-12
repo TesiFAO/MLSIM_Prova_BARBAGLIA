@@ -46,7 +46,8 @@ public class GCM {
     }
 
     /**
-     * Genera la sequenza predetta dal Corollario A
+     * Genera una sequenza contenente i numeri 4v + 1 con
+     * v = 0, 1, …, 2^(b-1)-1
      *
      * @return  Sequenza predetta dal Corollario Q
      */
@@ -59,7 +60,8 @@ public class GCM {
     }
 
     /**
-     * Genera la sequenza predetta dal Corollario A
+     * Genera una sequenza contenente i numeri 4v + 3 con
+     * v = 0, 1, …, 2^(b-1)-1
      *
      * @return  Sequenza predetta dal Corollario Q
      */

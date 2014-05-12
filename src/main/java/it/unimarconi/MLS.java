@@ -16,7 +16,7 @@ public class MLS {
 
         System.out.println("Pratica 1\n");
         int a = 5;
-        int seed = 1;
+        int seed = 3;
         int b = 9;
         GCM gcm = new GCM(a, seed, b);
         ArrayList<Double> l = new ArrayList<Double>();
