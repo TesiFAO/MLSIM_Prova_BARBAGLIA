@@ -33,6 +33,11 @@ public class Uniformita {
 
     public boolean[] eseguiTest() {
 
+        System.out.print("Test di Uniformita: [a: " + this.getA() + "]");
+        System.out.print("[seed: " + this.getSeed() + "]");
+        System.out.print("[b: " + this.getB() + "]");
+        System.out.println("[d: " + this.getD() + "]\t\t");
+
         boolean[] out = new boolean[this.getProve()];
 
         double min = ChiQuadro.calcolaAlphaPercentile(this.getD() - 1, ChiQuadro.Z25);
@@ -70,7 +75,7 @@ public class Uniformita {
             for (Double freq : freqs.values())
                 yss.add(freq);
             double v = ChiQuadro.calcolaV(yss, size, (1.0 / this.getD()));
-//            System.out.println(min + " < " + v + " < " + max + " ?");
+            System.out.println("\tSotto-sequenza " + k + ": " + min + " < " + v + " < " + max + " ?");
             if (v > min && v < max) {
                 out[k] = true;
             } else {
@@ -83,10 +88,7 @@ public class Uniformita {
             if (out[i])
                 count++;
 
-        System.out.print("Test di Uniformita: [a: " + this.getA() + "]");
-        System.out.print("[seed: " + this.getSeed() + "]");
-        System.out.print("[b: " + this.getB() + "]");
-        System.out.print("[d: " + this.getD() + "]\t\t");
+
         System.out.println(count + " successi su " + this.getProve() + " prove.\n");
 
         return out;
